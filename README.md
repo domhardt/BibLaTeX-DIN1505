@@ -3,4 +3,4 @@ BibLaTeX-DIN1505
 
 Bibliografiestil für BibLaTeX nach DIN 1505
 
-gehört nach ~/Library/texmf/text/latex/biblatex/
+gehört unter MacOS nach ~/Library/texmf/tex/latex/biblatex/
