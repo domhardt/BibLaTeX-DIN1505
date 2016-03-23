@@ -2,32 +2,32 @@
 % $Id: standard.bbx,v 1.6 2011/07/29 19:21:28 lehman stable $
 % Angepasst:
 % din.bbx, v2012-06-27, Michael Domhardt
-% gekürzt nach Vorschlag von moewew vom 5. Nov. 2015, siehe: https://github.com/domhardt/BibLaTeX-DIN1505/issues/1#issuecomment-154122346 
+% gek√ºrzt nach Vorschlag von moewew vom 5. Nov. 2015, siehe: https://github.com/domhardt/BibLaTeX-DIN1505/issues/1#issuecomment-154122346
 
 \ProvidesFile{din.bbx}[2015/09/06, v2015-09-06, DIN 1505 style for biblatex, Michael Domhardt]
 
 \RequireBibliographyStyle{standard}
 
-
-\setlength{\bibhang}{0em}% hängender Einzug der Bibliografie
-%\setlength{\bibitemsep}{\baselineskip}% Abstand zwischen zwei Einträgen im Literaturverzeichnis
+\setlength{\bibhang}{0em}% h√§ngender Einzug der Bibliografie
+%\setlength{\bibitemsep}{\baselineskip}% Abstand zwischen zwei Eintr√§gen im Literaturverzeichnis
 \setlength{\bibinitsep}{\baselineskip}% Abstand zwischen zwei unterschiedlichen Anfangsbuchstaben im Literaturverzeichnis
 
 \renewcommand*{\labelnamepunct}{\addcolon\addspace}% nach den Autoren- und Herausgebernamen folgt ein Doppelpunkt
 
-\DeclareNameAlias{default}{last-first}% Nachnamen stehen bei Autoren und Herausgebern vor dem Vorname 
+%\DeclareNameAlias{default}{last-first}% Nachnamen stehen bei Autoren und Herausgebern vor dem Vorname
+\DeclareNameAlias{default}{family-given}% Nachnamen stehen bei Autoren und Herausgebern vor dem Vorname
 
-\DeclareFieldFormat[article]{title}{#1\midsentence}% keine Anführungszeichen beim Titel von Zeitschriftenbeiträgen
-%\DeclareFieldFormat[article]{date}{(#1)\midsentence}% Klammern um das Jahr bei Zeitschriftenbeiträgen
-\DeclareFieldFormat[article]{number}{Nr. #1\midsentence}% Klammern um das Jahr bei Zeitschriftenbeiträgen
+\DeclareFieldFormat[article]{title}{#1\midsentence}% keine Anf√ºhrungszeichen beim Titel von Zeitschriftenbeitr√§gen
+%\DeclareFieldFormat[article]{date}{(#1)\midsentence}% Klammern um das Jahr bei Zeitschriftenbeitr√§gen
+\DeclareFieldFormat[article]{number}{Nr. #1\midsentence}% Klammern um das Jahr bei Zeitschriftenbeitr√§gen
 
-\DeclareFieldFormat[incollection]{title}{#1\midsentence}% keine Anführungszeichen beim Beiträgen in Sammelwerken
+\DeclareFieldFormat[incollection]{title}{#1\midsentence}% keine Anf√ºhrungszeichen beim BeitrÔøΩgen in Sammelwerken
 
-\DeclareFieldFormat[inproceedings]{title}{#1\midsentence}% keine Anführungszeichen beim Titel von Konferenzbeiträgen
+\DeclareFieldFormat[inproceedings]{title}{#1\midsentence}% keine Anf√ºhrungszeichen beim Titel von Konferenzbeitr√§gen
 
-\DeclareFieldFormat[inbook]{title}{#1\midsentence}% keine Anführungszeichen beim Titel von Buchbeiträgen
+\DeclareFieldFormat[inbook]{title}{#1\midsentence}% keine AnfÔøΩhrungszeichen beim Titel von BuchbeitrÔøΩgen
 
-\DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}\midsentence}% keine Anführungszeichen dafür kursiver Titel bei Dissertationen
+\DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}\midsentence}% keine Anf√ºhrungszeichen daf√ºr kursiver Titel bei Dissertationen
 
 
 \renewcommand*{\finentrypunct}{}% Punkt am Ende der Publikation entfernen
@@ -38,7 +38,7 @@
 \renewcommand*{\multinamedelim}{\addsemicolon\space}
 \renewcommand*{\finalnamedelim}{\addsemicolon\space}
 
-\renewbibmacro*{editor}{% Komma vor Herausgeberkürzel entfernen
+\renewbibmacro*{editor}{% Komma vor HerausgeberkÔøΩrzel entfernen
   \ifboolexpr{
     test \ifuseeditor
     and
@@ -50,7 +50,7 @@
      \clearname{editor}}
     {}}
 
-\renewbibmacro*{editor+others}{% Komma vor Herausgeberkürzel entfernen
+\renewbibmacro*{editor+others}{% Komma vor Herausgeberk√ºrzel entfernen
   \ifboolexpr{
     test \ifuseeditor
     and
@@ -62,14 +62,15 @@
      \clearname{editor}}
     {}}
 
-\AtBeginBibliography{% 
-  \renewcommand*{\mkbibnamelast}[1]{\textsc{#1}}% Nachnamen bei Autoren und Herausgebern in Kapitälchen
+\AtBeginBibliography{%
+%  \renewcommand*{\mkbibnamelast}[1]{\textsc{#1}}% Nachnamen bei Autoren und Herausgebern in Kapit√§lchen
+  \renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}% Nachnamen bei Autoren und Herausgebern in Kapit√§lchen
   \renewcommand*{\multinamedelim}{\mbox{ }\addspace\addsemicolon\addspace}%  Spatium und Semikolon als Autoren- und Herausgebertrenner
   \renewcommand*{\finalnamedelim}{\multinamedelim}%  Spatium und Semikolon als Autoren- und Herausgebertrenner
   }
 
-% zusätzlicher Eintragstyp @standard
-% geändert von @misc
+% zus√§tzlicher Eintragstyp @standard
+% ge√§ndert von @misc
 \DeclareBibliographyDriver{standard}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
@@ -269,7 +270,7 @@
   \setunit{\addspace}%
   \usebibmacro{issue+date}%
   \setunit{\addspace}%
-  \printfield{number}% 
+  \printfield{number}%
   \setunit{\addcomma\space}%
   \printfield{eid}%
 %  \usebibmacro{volume+number+eid}%

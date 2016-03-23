@@ -3,7 +3,8 @@ BibLaTeX-DIN1505
 
 Bibliografiestil für BibLaTeX nach DIN 1505
 
-nutzt seit 2015-02-24 'labeldate' statt 'labelyear' -> in Bibliografie Feld 'date' statt 'year' ausfüllen!
+- nutzt seit 2015-02-24 'labeldate' statt 'labelyear' -> in Bibliografie Feld 'date' statt 'year' ausfüllen!
+- benötigt seit 2016-03-23 BibLaTeX in der Version 3.3
 
 gehört unter MacOS nach ~/Library/texmf/tex/latex/biblatex-din/
 
